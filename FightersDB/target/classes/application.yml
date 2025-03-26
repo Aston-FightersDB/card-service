@@ -1,0 +1,5 @@
+spring:
+    datasource:
+        url: ${DATASOURCE_URL_LOCAL}
+    application:
+        name: fighters-card-service
