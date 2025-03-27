@@ -135,7 +135,6 @@ public class CardServiceImpl implements CardService {
 
         Card card = optionalCard.get();
 
-        // Обновляем поля, если они указаны в запросе
         fields.forEach((key, value) -> {
             switch (key) {
                 case "name" -> card.setName((String) value);
@@ -144,6 +143,6 @@ public class CardServiceImpl implements CardService {
             }
         });
 
-        cardRepository.save(card); // Сохраняем изменения
+        cardRepository.save(card);
     }
 }
