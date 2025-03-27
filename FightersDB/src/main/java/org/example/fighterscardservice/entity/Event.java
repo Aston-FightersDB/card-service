@@ -29,10 +29,10 @@ public class Event {
     private UUID id;
 
     @Column
-    private Long red_fighter_id;
+    private UUID red_fighter_id;
 
     @Column
-    private Long blue_fighter_id;
+    private UUID blue_fighter_id;
 
     @OneToOne
     @JoinColumn(name = "result_id",nullable = true)

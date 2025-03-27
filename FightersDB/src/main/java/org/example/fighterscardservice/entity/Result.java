@@ -24,7 +24,10 @@ public class Result {
     private UUID id;
 
     @Column(nullable = false)
-    private int winner;
+    private UUID winner;
+
+    @Column(nullable = false)
+    private UUID loser;
 
     @Column(nullable = false)
     private boolean bonus;

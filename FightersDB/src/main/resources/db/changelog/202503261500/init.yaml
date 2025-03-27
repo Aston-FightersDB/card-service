@@ -36,10 +36,10 @@ databaseChangeLog:
                   type: UUID
               - column:
                   name: red_fighter_id
-                  type: BIGINT
+                  type: UUID
               - column:
                   name: blue_fighter_id
-                  type: BIGINT
+                  type: UUID
               - column:
                   name: result_id
                   type: UUID
@@ -67,7 +67,12 @@ databaseChangeLog:
                   constraints:
                     nullable: false
                   name: winner
-                  type: INT
+                  type: UUID
+              - column:
+                  constraints:
+                    nullable: false
+                  name: loser
+                  type: UUID
               - column:
                   constraints:
                     nullable: false
