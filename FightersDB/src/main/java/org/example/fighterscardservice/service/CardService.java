@@ -26,4 +26,6 @@ public interface CardService {
 
     void updateCardPartially(UUID cardId, Map<String, Object> fields);
 
+    void updateEventPartially(UUID cardId, UUID eventId, Map<String, Object> fields);
+
 }

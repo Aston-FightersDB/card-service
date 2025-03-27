@@ -145,4 +145,40 @@ public class CardServiceImpl implements CardService {
 
         cardRepository.save(card);
     }
+
+    @Override
+    public void updateEventPartially(UUID cardId, UUID eventId, Map<String, Object> fields) {
+
+        Optional<Card> optionalCard = cardRepository.findById(cardId);
+        if (!optionalCard.isPresent()) {
+            throw new RuntimeException("Card not found with id: " + cardId);
+        }
+
+        Optional<Event> optionalEvent = eventRepository.findById(eventId);
+        if (!optionalEvent.isPresent()) {
+            throw new RuntimeException("Event not found with id: " + eventId);
+        }
+
+        Event event = optionalEvent.get();
+
+        fields.forEach((key, value) -> {
+            switch (key) {
+                case "red_fighter_id" -> event.setRed_fighter_id((long) ((Number) value).intValue());
+                case "blue_fighter_id" -> event.setBlue_fighter_id((long) ((Number) value).intValue());
+                case "result_id" -> {
+                    if (value == null) {
+                        event.setResult(null); // Устанавливаем result в null, если значение не указано
+                    } else {
+                        UUID resultId = UUID.fromString(value.toString());
+                        event.setResult(resultRepository.findById(resultId)
+                                .orElseThrow(() -> new RuntimeException("Result not found with id: " + resultId)));
+                    }
+                }
+                default -> throw new RuntimeException("Invalid field: " + key);
+            }
+        });
+
+        // Сохраняем изменения
+        eventRepository.save(event);
+    }
 }

@@ -62,4 +62,13 @@ public class CardController {
         cardService.updateCardPartially(cardId, fields);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @PatchMapping("/card/{cardId}/event/{eventId}")
+    public ResponseEntity<Void> updateEventPartially(
+            @PathVariable UUID cardId,
+            @PathVariable UUID eventId,
+            @RequestBody Map<String, Object> fields) {
+        cardService.updateEventPartially(cardId, eventId, fields);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
