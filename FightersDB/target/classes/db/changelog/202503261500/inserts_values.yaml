@@ -52,22 +52,13 @@ databaseChangeLog:
                   value: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a01"
               - column:
                   name: winner
-                  value: 1
+                  value: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a01"
+              - column:
+                  name: loser
+                  value: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a01"
               - column:
                   name: bonus
                   value: true
-        - insert:
-            tableName: result
-            columns:
-              - column:
-                  name: id
-                  value: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a10"
-              - column:
-                  name: winner
-                  value: 2
-              - column:
-                  name: bonus
-                  value: false
 
   - changeSet:
       id: insert-ufc-events-data
@@ -81,31 +72,13 @@ databaseChangeLog:
                   value: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a03"
               - column:
                   name: red_fighter_id
-                  value: 1
+                  value: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
               - column:
                   name: blue_fighter_id
-                  value: 2
+                  value: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a06"
               - column:
                   name: result_id
                   value: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a01"
-              - column:
-                  name: card_id
-                  value: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
-        - insert:
-            tableName: event
-            columns:
-              - column:
-                  name: id
-                  value: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a06"
-              - column:
-                  name: red_fighter_id
-                  value: 3
-              - column:
-                  name: blue_fighter_id
-                  value: 4
-              - column:
-                  name: result_id
-                  value: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a10"
               - column:
                   name: card_id
                   value: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"

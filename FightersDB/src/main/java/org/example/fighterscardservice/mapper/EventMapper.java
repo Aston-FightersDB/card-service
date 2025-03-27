@@ -24,15 +24,12 @@ public interface EventMapper {
 
         UUID cardId = event.getCard() != null ? event.getCard().getId() : null;
 
-        String resultWinner = determineWinner(event.getResult());
-
         return new EventDto(
                 event.getId(),
                 event.getRed_fighter_id(),
                 event.getBlue_fighter_id(),
                 resultDto,
-                cardId, // Только id карты
-                resultWinner
+                cardId// Только id карты
         );
     }
 
@@ -40,12 +37,5 @@ public interface EventMapper {
         return java.util.stream.StreamSupport.stream(events.spliterator(), false)
                 .map(this::toDto)
                 .collect(Collectors.toList());
-    }
-
-    default String determineWinner(org.example.fighterscardservice.entity.Result result) {
-        if (result == null) {
-            return null;
-        }
-        return result.getWinner() == 1 ? "Red fighter" : "Blue fighter";
     }
 }

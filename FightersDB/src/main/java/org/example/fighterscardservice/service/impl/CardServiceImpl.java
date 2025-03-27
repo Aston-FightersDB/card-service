@@ -110,7 +110,6 @@ public class CardServiceImpl implements CardService {
         } else {
 
             result = Result.builder()
-                    .winner(0)
                     .bonus(false)
                     .build();
             result = resultRepository.save(result);
@@ -163,8 +162,8 @@ public class CardServiceImpl implements CardService {
 
         fields.forEach((key, value) -> {
             switch (key) {
-                case "red_fighter_id" -> event.setRed_fighter_id((long) ((Number) value).intValue());
-                case "blue_fighter_id" -> event.setBlue_fighter_id((long) ((Number) value).intValue());
+                case "red_fighter_id" -> event.setRed_fighter_id((UUID)value);
+                case "blue_fighter_id" -> event.setBlue_fighter_id((UUID)value);
                 case "result_id" -> {
                     if (value == null) {
                         event.setResult(null); // Устанавливаем result в null, если значение не указано

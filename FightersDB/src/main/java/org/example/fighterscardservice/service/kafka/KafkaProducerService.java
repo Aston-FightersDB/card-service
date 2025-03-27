@@ -1,5 +1,7 @@
 package org.example.fighterscardservice.service.kafka;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -14,23 +16,21 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class KafkaProducerService {
-    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
 
-    public KafkaProducerService(KafkaTemplate<String, String> kafkaTemplate) {
+    public KafkaProducerService(KafkaTemplate<String, Object> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     public void sendMessage(String message) {
         kafkaTemplate.send("message-topic", message);
         System.out.println("Sent message: " + message);
     }
 
-    public void sendCardFinished(Event event) {
-        UUID loserId = event.getResult().getLoser();
-        UUID winnerId = event.getResult().getWinner();
-        EventFinishedDto dto = EventFinishedDto.builder().eventId(event.getId()).loserId(loserId).winnerId(winnerId).build();
-        String message = "ID: " + dto.getEventId().toString() + " Winners IDs: " + dto.getWinnerId().toString()+ " Losers IDs: " + dto.getLoserId().toString();
-        kafkaTemplate.send("event-finished", message);
-        System.out.println("Sent card-finished event: " + message);
+    public void sendEventFinished(EventFinishedDto eventFinishedDto) {
+        UUID correlationId = UUID.randomUUID();
+        kafkaTemplate.send("event-finished", correlationId.toString(), eventFinishedDto);
+        System.out.println("Sent event-finished event: " + eventFinishedDto);
     }
 }

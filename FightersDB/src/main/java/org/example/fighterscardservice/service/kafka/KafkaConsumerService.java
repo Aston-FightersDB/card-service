@@ -9,9 +9,4 @@ public class KafkaConsumerService {
     public void listen(String message) {
         System.out.println("Received message: " + message);
     }
-
-    @KafkaListener(topics = "event-finished", groupId = "card-service-group")
-    public void listenCardFinished(String message) {
-        System.out.println("Received message: " + message);
-    }
 }

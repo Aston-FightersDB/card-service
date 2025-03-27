@@ -43,15 +43,7 @@ public interface CardMapper {
                 event.getRed_fighter_id(),
                 event.getBlue_fighter_id(),
                 null,
-                null,
-                determineWinner(event.getResult())
+                null
         );
-    }
-
-    default String determineWinner(org.example.fighterscardservice.entity.Result result) {
-        if (result == null) {
-            return null;
-        }
-        return result.getWinner() == 1 ? "Red fighter" : "Blue fighter";
     }
 }

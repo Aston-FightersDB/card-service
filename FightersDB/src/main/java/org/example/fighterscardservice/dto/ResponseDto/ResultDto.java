@@ -11,7 +11,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class ResultDto {
     private UUID id;
-    private int winner;
+    private UUID winner;
     private boolean bonus;
 
 }

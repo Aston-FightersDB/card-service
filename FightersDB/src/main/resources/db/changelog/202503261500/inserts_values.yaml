@@ -82,21 +82,3 @@ databaseChangeLog:
               - column:
                   name: card_id
                   value: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
-        - insert:
-            tableName: event
-            columns:
-              - column:
-                  name: id
-                  value: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a06"
-              - column:
-                  name: red_fighter_id
-                  value: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a06"
-              - column:
-                  name: blue_fighter_id
-                  value: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
-              - column:
-                  name: result_id
-                  value: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a10"
-              - column:
-                  name: card_id
-                  value: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
