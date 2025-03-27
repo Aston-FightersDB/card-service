@@ -1,5 +1,6 @@
 package org.example.fighterscardservice.service.impl;
 
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -123,5 +124,26 @@ public class CardServiceImpl implements CardService {
                 .build();
 
         eventRepository.save(event);
+    }
+
+    @Override
+    public void updateCardPartially(UUID cardId, Map<String, Object> fields) {
+        Optional<Card> optionalCard = cardRepository.findById(cardId);
+        if (!optionalCard.isPresent()) {
+            throw new RuntimeException("Card not found with id: " + cardId);
+        }
+
+        Card card = optionalCard.get();
+
+        // Обновляем поля, если они указаны в запросе
+        fields.forEach((key, value) -> {
+            switch (key) {
+                case "name" -> card.setName((String) value);
+                case "arena" -> card.setArena((String) value);
+                default -> throw new RuntimeException("Invalid field: " + key);
+            }
+        });
+
+        cardRepository.save(card); // Сохраняем изменения
     }
 }

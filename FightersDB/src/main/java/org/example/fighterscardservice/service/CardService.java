@@ -1,5 +1,6 @@
 package org.example.fighterscardservice.service;
 
+import java.util.Map;
 import java.util.UUID;
 import org.example.fighterscardservice.dto.RequestDto.CardCreateDto;
 import org.example.fighterscardservice.dto.RequestDto.CardUpdateDto;
@@ -22,5 +23,7 @@ public interface CardService {
     Iterable<EventDto> getEventsByCard(UUID cardId);
 
     void addEventToCard(UUID cardId, EventCreateDto eventCreateDto);
+
+    void updateCardPartially(UUID cardId, Map<String, Object> fields);
 
 }

@@ -1,6 +1,7 @@
 package org.example.fighterscardservice.controller;
 
 import java.util.UUID;
+import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.example.fighterscardservice.dto.RequestDto.CardCreateDto;
 import org.example.fighterscardservice.dto.RequestDto.CardUpdateDto;
@@ -54,5 +55,11 @@ public class CardController {
     public ResponseEntity<Void> addEventToCard(@PathVariable UUID cardId, @RequestBody EventCreateDto eventCreateDto) {
         cardService.addEventToCard(cardId, eventCreateDto);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PatchMapping("/card/{cardId}")
+    public ResponseEntity<Void> updateCardPartially(@PathVariable UUID cardId, @RequestBody Map<String, Object> fields) {
+        cardService.updateCardPartially(cardId, fields);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
