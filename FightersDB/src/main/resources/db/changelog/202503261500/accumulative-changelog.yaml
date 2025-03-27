@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/202503261500/init.yaml
+  - include:
+      file: db/changelog/202503261500/inserts_values.yaml

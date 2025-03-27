@@ -1,5 +1,16 @@
+server:
+    port: 8082
+
 spring:
-    datasource:
-        url: ${DATASOURCE_URL_LOCAL}
     application:
-        name: fighters-card-service
+        name: user-service
+    #  profiles:
+    #    active: local
+    datasource:
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://localhost:5434/cards_service_db
+        username: postgres
+        password: postgres
+
+    liquibase:
+        change-log: db/changelog/liquibase-master.yml

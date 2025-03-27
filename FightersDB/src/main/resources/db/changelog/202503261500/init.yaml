@@ -1,0 +1,108 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1743079178728-1
+      author: shoichi
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_card
+                  name: id
+                  type: UUID
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: arena
+                  type: VARCHAR(255)
+            tableName: card
+  - changeSet:
+      id: 1743079178728-2
+      author: shoichi
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_event
+                  name: id
+                  type: UUID
+              - column:
+                  name: red_fighter_id
+                  type: BIGINT
+              - column:
+                  name: blue_fighter_id
+                  type: BIGINT
+              - column:
+                  name: result_id
+                  type: UUID
+              - column:
+                  constraints:
+                    nullable: false
+                  name: card_id
+                  type: UUID
+            tableName: event
+  - changeSet:
+      id: 1743079178728-3
+      author: shoichi
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_result
+                  name: id
+                  type: UUID
+              - column:
+                  constraints:
+                    nullable: false
+                  name: winner
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: bonus
+                  type: BOOLEAN
+            tableName: result
+  - changeSet:
+      id: 1743079178728-4
+      author: shoichi
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: result_id
+            constraintName: uc_event_result
+            tableName: event
+  - changeSet:
+      id: 1743079178728-5
+      author: shoichi
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: card_id
+            baseTableName: event
+            constraintName: FK_EVENT_ON_CARD
+            referencedColumnNames: id
+            referencedTableName: card
+  - changeSet:
+      id: 1743079178728-6
+      author: shoichi
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: result_id
+            baseTableName: event
+            constraintName: FK_EVENT_ON_RESULT
+            referencedColumnNames: id
+            referencedTableName: result
+

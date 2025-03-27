@@ -1,0 +1,111 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-ufc-cards-data
+      author: shoichi
+      changes:
+        - insert:
+            tableName: card
+            columns:
+              - column:
+                  name: id
+                  value: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
+              - column:
+                  name: name
+                  value: "UFC 295"
+              - column:
+                  name: arena
+                  value: "T-Mobile Arena"
+        - insert:
+            tableName: card
+            columns:
+              - column:
+                  name: id
+                  value: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+              - column:
+                  name: name
+                  value: "UFC 296"
+              - column:
+                  name: arena
+                  value: "Madison Square Garden"
+        - insert:
+            tableName: card
+            columns:
+              - column:
+                  name: id
+                  value: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a12"
+              - column:
+                  name: name
+                  value: "UFC 297"
+              - column:
+                  name: arena
+                  value: "Las Vegas Stadium"
+
+  - changeSet:
+      id: insert-ufc-results-data
+      author: shoichi
+      changes:
+        - insert:
+            tableName: result
+            columns:
+              - column:
+                  name: id
+                  value: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a01"
+              - column:
+                  name: winner
+                  value: 1
+              - column:
+                  name: bonus
+                  value: true
+        - insert:
+            tableName: result
+            columns:
+              - column:
+                  name: id
+                  value: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a10"
+              - column:
+                  name: winner
+                  value: 2
+              - column:
+                  name: bonus
+                  value: false
+
+  - changeSet:
+      id: insert-ufc-events-data
+      author: shoichi
+      changes:
+        - insert:
+            tableName: event
+            columns:
+              - column:
+                  name: id
+                  value: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a03"
+              - column:
+                  name: red_fighter_id
+                  value: 1
+              - column:
+                  name: blue_fighter_id
+                  value: 2
+              - column:
+                  name: result_id
+                  value: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a01"
+              - column:
+                  name: card_id
+                  value: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
+        - insert:
+            tableName: event
+            columns:
+              - column:
+                  name: id
+                  value: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a06"
+              - column:
+                  name: red_fighter_id
+                  value: 3
+              - column:
+                  name: blue_fighter_id
+                  value: 4
+              - column:
+                  name: result_id
+                  value: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a10"
+              - column:
+                  name: card_id
+                  value: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"

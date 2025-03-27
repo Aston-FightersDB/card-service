@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+
+  database:
+    image: postgres:14.7
+    container_name: cards_service_db
+    ports:
+      - "5434:5432"
+    restart: always
+    environment:
+      POSTGRES_DB: cards_service_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres-cards-service:/var/lib/postgresql/data
+    networks:
+      - fighters-network
+
+volumes:
+  postgres-cards-service:
+    name: postgres-cards-service
+
+networks:
+  fighters-network:
+    name: fighters-network
